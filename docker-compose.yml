@@ -1,0 +1,13 @@
+services:
+  bot:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      # Spend ledger, settings and consents. A named volume keeps the right file permissions.
+      - bot-data:/data
+      # Your own characters: uncomment, then set CHARACTERS_FILE=characters/custom.json in .env
+      # - ./my-characters.json:/app/characters/custom.json:ro
+
+volumes:
+  bot-data:
